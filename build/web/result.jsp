@@ -17,13 +17,16 @@
         <table>
             <s:iterator value="products" var="product">
                 <tr>
+                    <td><s:property value="id"/></td>
                     <td><s:property value="name"/></td>
                     <td><s:property value="price"/></td>
                     <td><s:property value="description"/></td>
+                    <td><a href="deleteProduct?id=<s:property value="id"/>">Delete</a></td>
+                    <td><a href="product?id=<s:property value="id"/>">Edit</a></td>
                     <td><a href="addToCart?newProductId=<s:property value="id"/>">Add to cart</a></td>
                 </tr>
             </s:iterator>
-                <a href="index.jsp">Back</a>
+                <a href="index.jsp">Back</a><a href="updateProduct.jsp">Add</a>
         </table>
     </body>
 </html>

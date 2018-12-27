@@ -14,13 +14,18 @@ import java.util.List;
  *
  * @author badan
  */
-public class ProductList extends ActionSupport{
+public class ProductList extends ActionSupport {
+
     private String keyword;
     private List<Product> products;
-    
+
     @Override
-    public String execute() throws Exception{
-        products = new ProductManager().getProductsByName(keyword);
+    public String execute() throws Exception {
+        if (keyword == null) {
+            products = new ProductManager().getAllProduct();
+        } else {
+            products = new ProductManager().getProductsByName(keyword);
+        }
         return SUCCESS;
     }
 
@@ -35,6 +40,5 @@ public class ProductList extends ActionSupport{
     public List<Product> getProducts() {
         return products;
     }
-    
-    
+
 }

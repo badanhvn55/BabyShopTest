@@ -17,5 +17,11 @@
         <action name="viewCart" class="baby.shop.ui.model.ViewCart">
             <result name="success">viewCart.jsp</result>
         </action>
+        <action name="updateProduct" class="baby.shop.ui.model.UpdateProduct">
+            <result name="success">productList</result>
+        </action>
+        <action name="product" class="baby.shop.ui.model.ProductInfo">
+            <result name="success">editProduct.jsp</result>
+        </action>
     </package>
 </struts>

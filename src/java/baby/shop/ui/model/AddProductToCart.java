@@ -15,21 +15,33 @@ import com.opensymphony.xwork2.ActionSupport;
  *
  * @author badan
  */
-public class AddProductToCart extends ActionSupport{
+public class AddProductToCart extends ActionSupport {
+
     private int newProductId;
-    
-    public void setNewPeroductId(int newProductId){
+
+    public int getNewProductId() {
+        return newProductId;
+    }
+
+    public void setNewProductId(int newProductId) {
         this.newProductId = newProductId;
     }
-    
+
     @Override
-    public String execute() throws Exception{
+    public String execute() throws Exception {
         Cart cart = (Cart) ActionContext.getContext().getSession().get("cart");
-        if(cart == null) cart = new Cart();
+        if (cart == null) {
+            cart = new Cart();
+        }
+        System.out.println("NEW PRODUCT ID = " + newProductId);
         Product p = new ProductManager().getProductById(newProductId);
-        if(p.getId() == 0) return ERROR;
+        if (p.getId() == 0) {
+            return ERROR;
+        }
         cart.addProduct(p);
         ActionContext.getContext().getSession().put("cart", cart);
+        System.out.println("SUCCESS ADD TO CART...");
+        System.out.println(cart.getTotalPrice());
         return SUCCESS;
     }
 }
